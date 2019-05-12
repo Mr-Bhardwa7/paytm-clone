@@ -1,9 +1,9 @@
 import React, { Component, Suspense } from 'react';
-import { Route, Switch } from 'react-router-dom';
 import { Container } from 'reactstrap';
-import { DefaultHeader, DefaultFooter } from '../../containers'
+import { DefaultHeader, DefaultFooter } from '../../container'
+import { connect } from 'react-redux';
+
 import {
-  AppBreadcrumb,
   AppFooter,
   AppHeader,
 } from '@coreui/react';
@@ -20,14 +20,14 @@ class DashboardContainer extends Component {
       <div className="app">
         <AppHeader fixed>
           <Suspense  fallback={this.loading()}>
-            <DefaultHeader />
+            <DefaultHeader {...this.props}/>
           </Suspense>
         </AppHeader>
         <div className="app-body">
           <main className="main p-4">
             <Container fluid>
               <Suspense fallback={this.loading()}>
-                  <Dashboard />
+                  <Dashboard {...this.props} />
               </Suspense>
             </Container>
           </main>
@@ -42,4 +42,9 @@ class DashboardContainer extends Component {
   }
 }
 
-export default DashboardContainer;
+
+const mapStateToProps = ({users, transactions}) => ({ users: users, transactions : transactions })
+
+const mapDispatchToProps = (dispatch) => ({})
+
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardContainer)
