@@ -2,6 +2,10 @@
 ## Patym Clone
 React & Redux project.
 
+
+![](https://img.shields.io/badge/license-MIT-000000.svg)
+![](https://img.shields.io/badge/platform-react-brightgreen.svg)
+
 Clone the project and run these two command :
 `npm install`
 `npm start`
