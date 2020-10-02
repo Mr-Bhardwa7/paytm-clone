@@ -20,7 +20,7 @@ export default function UserReducer(state = initialState, action) {
     case 'USER/ADD_AMOUNT_TO_WALLET' :
         let index = state.users.findIndex( value => value.id === action.payload.id);
         let currentUser = state.users[index]
-        currentUser.transaction.wallet = action.payload.amount
+        currentUser.transaction.wallet += action.payload.amount
         return {
             ...state
         }
